@@ -58,14 +58,6 @@ def is_test_commit(log:str):
             return 1
     return 0
 
-
-# logs = git_logs()
-# quality_index = process_logs(logs, [no_squashed_commit, is_empty_body, count_bad_words])
-# test_index = process_logs(logs, [is_test_commit])
-
-# print(quality_index)
-# print(test_index)
-
 ####################################
 
 def git_all_branches():
@@ -96,25 +88,32 @@ def is_old(branch):
 def count_old_branches(branches):
     count = len(branches)
     counter = 0
+    i = 0
+    min = 10
+    if(count > min):
+        branches = random.sample(branches, min)
+        count = min
     for branch in branches:
+        i += 1
+        # print(i / count * 100)
         counter += 1 if is_old(branch) else 0
     return counter / count * 100
 
 def are_coupled(branchA:str, branchB:str):
-    print(branchA, branchB)
+    # print(branchA, branchB)
     if branchA == branchB:
         return False
     ret = subprocess.check_output(["git", "--no-pager", "branch", "--contains", branchA, "-r"]).decode().split("\n")
     for r in ret:
         if branchB == r.strip().lstrip():
-            print("found", branchB)
+            # print("found", branchB)
             return True
     return False
 
 
 def count_coupled(branches):
     count = len(branches)
-    min = 20
+    min = 10
     if(count > min):
         branches = random.sample(branches, min)
         count = min
@@ -127,20 +126,37 @@ def count_coupled(branches):
     for bA in branches:
         for bB in branches:
             i += 1
-            print(i / count**2 * 100)
+            # print(i / count**2 * 100)
             counter = 1 if are_coupled(bA, bB) else 0
     return counter / count * 100
-            
+
+logs = git_logs()
+bad_commit_index = process_logs(logs, [no_squashed_commit, is_empty_body, count_bad_words])
+test_index = process_logs(logs, [is_test_commit])
+
+
+  
 branches = git_all_branches()
 branches,
 bA = branches[0]
 bB = branches[1]
-# fix/14811_14856_accessibility_issues_partial
-# fix/14504_keyboard_accessibility_issue
-print(count_coupled(branches))
-#dead branch
-#branch coupling
+old_branches = count_old_branches(branches)
+# coupling = count_coupled(branches)
+coupling = 0
 
+print(bad_commit_index)
+print(test_index)
+print(old_branches)
+print(coupling)
 
+# bad_commit_index = 0
+# test_index = 100
+# old_branches = 0
+# coupling = 0
 
+overall = (100 - bad_commit_index) + \
+ test_index + (100 - old_branches) + \
+     (100 - coupling)
+
+print(overall / 4)
 
