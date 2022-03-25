@@ -1,5 +1,6 @@
 import subprocess
 from datetime import datetime
+import random
 
 bad_words = ["WIP", "work in progress", "in progress", "TODO"]
 def git_logs():
@@ -69,7 +70,7 @@ def is_test_commit(log:str):
 
 def git_all_branches():
     ret = subprocess.check_output(["git", "--no-pager", "branch", "-r"]).decode()
-    return [r.strip() for r in ret.splitlines()]
+    return [r.strip().lstrip() for r in ret.split("\n")]
 
 def git_get_branch_date(branch):
     if("->" in branch):
@@ -99,12 +100,44 @@ def count_old_branches(branches):
         counter += 1 if is_old(branch) else 0
     return counter / count * 100
 
+def are_coupled(branchA:str, branchB:str):
+    print(branchA, branchB)
+    if branchA == branchB:
+        return False
+    ret = subprocess.check_output(["git", "--no-pager", "branch", "--contains", branchA, "-r"]).decode().split("\n")
+    for r in ret:
+        if branchB == r.strip().lstrip():
+            print("found", branchB)
+            return True
+    return False
 
 
+def count_coupled(branches):
+    count = len(branches)
+    min = 20
+    if(count > min):
+        branches = random.sample(branches, min)
+        count = min
+    branches.append("origin/develop")
+    branches.append("origin/master")
+    # branches.append("origin/main")
+    count += 2
+    counter = 0
+    i = 0
+    for bA in branches:
+        for bB in branches:
+            i += 1
+            print(i / count**2 * 100)
+            counter = 1 if are_coupled(bA, bB) else 0
+    return counter / count * 100
+            
 branches = git_all_branches()
-
-
-print(count_old_branches(branches))
+branches,
+bA = branches[0]
+bB = branches[1]
+# fix/14811_14856_accessibility_issues_partial
+# fix/14504_keyboard_accessibility_issue
+print(count_coupled(branches))
 #dead branch
 #branch coupling
 
