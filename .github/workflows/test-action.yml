@@ -1,0 +1,14 @@
+name: Test Action
+
+on: [push]
+
+jobs:
+  build-linux:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Git Quality Check
+      uses: gcattan/git-quality-check@latest
+      with:
+        bad_words: 'WIP'
+        main_branches: 'origin/master'
+        
