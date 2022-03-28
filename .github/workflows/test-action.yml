@@ -11,4 +11,3 @@ jobs:
       with:
         bad_words: 'WIP'
         main_branches: 'origin/master'
-
