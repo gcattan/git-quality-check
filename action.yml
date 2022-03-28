@@ -9,5 +9,5 @@ inputs:
     description: 'Name of the main branches of the repository, e.g. origin/master or origin/develop'
     required: false
 runs:
-  using: 'node16'
+  using: 'docker'
   main: 'git-quality-check.py'
