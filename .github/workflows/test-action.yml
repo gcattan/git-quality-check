@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   build-linux:
-    runs-on: ubuntu-latest
+    runs-on: node16
     steps:
     - name: Git Quality Check
       uses: gcattan/git-quality-check@v0.1
