@@ -9,7 +9,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
     - name: Git Quality Check
-      uses: gcattan/git-quality-check@v0.1.1
+      uses: gcattan/git-quality-check@v0.1.2
      # with:
      #   bad_words: 'WIP'
      #   main_branches: 'origin/master'
