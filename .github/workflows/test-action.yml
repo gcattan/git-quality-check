@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Git Quality Check
-      uses: gcattan/git-quality-check@v0.2
+      uses: gcattan/git-quality-check@v0.3
       with:
         bad_words: 'WIP'
         main_branches: 'origin/master'
