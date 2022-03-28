@@ -6,6 +6,8 @@ jobs:
   build-linux:
     runs-on: ubuntu-latest
     steps:
+    - name: Checkout
+      uses: actions/checkout@v2
     - name: Git Quality Check
       uses: gcattan/git-quality-check@v0.5.11
      # with:
