@@ -91,6 +91,7 @@ def git_get_branch_date(branch):
     if "->" in branch:
         return None
     ret = run_git(["log", "-n", "1", "--pretty=%as", branch]).split("-")
+    print(ret)
     return datetime(int(ret[0]), int(ret[1]), int(ret[2]))
 
 
