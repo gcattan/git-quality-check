@@ -178,3 +178,5 @@ coupling_index = 0
 
 overall = compute_score(bad_commit_index, test_index,
                         old_branches_index, coupling_index)
+
+print(f"::set-output name=score::{overall}")
