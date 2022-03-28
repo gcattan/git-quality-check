@@ -1,3 +1,4 @@
+from multiprocessing.spawn import old_main_modules
 import random
 import subprocess
 from datetime import datetime
@@ -163,13 +164,14 @@ bad_commit_index = process_logs(logs, [not_a_squashed_commit,
                                        count_bad_words])
 test_index = process_logs(logs, [is_test_commit])
 
-old_branches_index = count_old_branches(branches)
+# old_branches_index = count_old_branches(branches)
 coupling_index = count_coupled(branches)
 
 
 print(bad_commit_index)
 print(test_index)
-print(old_branches_index)
+# print(old_branches_index)
+old_branches_index = 100
 print(coupling_index)
 
 
