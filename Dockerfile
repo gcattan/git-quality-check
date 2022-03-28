@@ -1,14 +1,7 @@
-FROM python:3-slim AS builder
-ADD . /app
-WORKDIR /app
+FROM python:3.9-slim-buster
+ADD git-quality-check.py /
 
-# We are installing a dependency here directly into our app source dir
-RUN pip install --target=/app requests
+# RUN pip install pystrich
 
-# A distroless container image with Python and some basics like SSL certificates
-# https://github.com/GoogleContainerTools/distroless
-FROM gcr.io/distroless/python3-debian10
-COPY --from=builder /app /app
-WORKDIR /app
-ENV PYTHONPATH /app
-CMD ["/app/git-quality-check.py", "(bad-words)", "(main_branches)"]
+RUN apt-get update && apt-get -y install git
+CMD [ "python", "./git-quality-check.py"]
