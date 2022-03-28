@@ -10,7 +10,7 @@ author: 'Gregoire Cattan'
 #     required: false
   outputs:
     score:
-      description: "Overall score"
+      description: 'Overall score'
 runs:
   using: 'docker'
   image: 'Dockerfile'
