@@ -19,6 +19,4 @@ jobs:
     - name: Check outputs
       run: |
         test "${{ steps.git-quality-check.outputs.score }}" == "50"
-  
-
 
