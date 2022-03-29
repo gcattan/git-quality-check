@@ -10,7 +10,7 @@ jobs:
       uses: actions/checkout@v2
     - name: Git Quality Check
       id: git-quality-check
-      uses: gcattan/git-quality-check@v0.1.8
+      uses: gcattan/git-quality-check@v0.1.9
       with:
         badWords: WIP, todo
         mainBranches: origin/master, origin/develop
