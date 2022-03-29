@@ -8,13 +8,13 @@ jobs:
     steps:
     - name: install git
       run: |
-        apt-get upgrade -y
-        apt-get update
-        apt-get -y install software-properties-common
-        apt-get upgrade -y
-        apt-get update
-        apt-add-repository ppa:git-core/ppa -y
-        apt-get -y install git
+        sudo apt-get upgrade -y
+        sudo apt-get update
+        sudo apt-get -y install software-properties-common
+        sudo apt-get upgrade -y
+        sudo apt-get update
+        sudo apt-add-repository ppa:git-core/ppa -y
+        sudo apt-get -y install git
     - name: Checkout
       uses: actions/checkout@v2
       with:
