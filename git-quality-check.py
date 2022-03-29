@@ -4,9 +4,7 @@ import subprocess
 from datetime import datetime
 import os
 
-bad_words = ["WIP", "work in progress", "in progress", "TODO"]
-main_branches = ["origin/develop", "origin/master"]
-
+global bad_words, main_branches
 
 def run_git(command: list[str]):
     command.insert(0, "--no-pager")
@@ -92,11 +90,9 @@ def git_all_branches():
 def git_get_branch_date(branch):
     if "->" in branch:
         return None
-    # ret = run_git(["log", "-n", "1", "--pretty=format:%as", branch]).split("-")
     ret = run_git(["log", "-n", "1", "--date=format:\"%Y-%m-%d\"", branch]).split("Date: ")[1]
     ret = ret.replace("\"", "").split("-")
     return datetime(int(strip(ret[0])), int(ret[1]), int(ret[2].split("\n")[0]))
-    # return datetime(2012, 8, 8)
 
 
 def get_date():
@@ -171,6 +167,17 @@ def compute_score(bad_commit_index, test_index,
 
 
 if __name__ == "__main__":
+
+    try:
+        bad_words = os.environ["INPUT_BADWORDS"].split(", ")
+    except:
+        bad_words = ["WIP", "work in progress", "in progress", "TODO"]
+    try:
+        arg = os.environ["INPUT_MAINBRANCHES"].split(", ")
+    except:
+        main_branches = ["origin/develop", "origin/master"]
+
+        
     logs = git_logs()
     branches = git_all_branches()
 
@@ -181,9 +188,8 @@ if __name__ == "__main__":
 
     old_branches_index = count_old_branches(branches)
     coupling_index = count_coupled(branches)
-    arg = os.environ["INPUT_BADWORDS"]
-    arg = os.environ["INPUT_MAINBRANCHES"]
-    # set_output(branches)
+    
+    
 
     print(bad_commit_index)
     print(test_index)
