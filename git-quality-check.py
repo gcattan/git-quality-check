@@ -2,6 +2,7 @@ from multiprocessing.spawn import old_main_modules
 import random
 import subprocess
 from datetime import datetime
+import os
 
 bad_words = ["WIP", "work in progress", "in progress", "TODO"]
 main_branches = ["origin/develop", "origin/master"]
@@ -149,6 +150,9 @@ def count_coupled(branches):
     return counter / count * 100
 
 
+def set_output(output:str):
+    print(f"::set-output name=score::{output}")
+
 def compute_score(bad_commit_index, test_index,
                   old_branches_index, coupling_index):
     return ((100 - bad_commit_index) +
@@ -156,27 +160,29 @@ def compute_score(bad_commit_index, test_index,
             (100 - coupling_index))/4
 
 
-logs = git_logs()
-branches = git_all_branches()
+if __name__ == "__main__":
+    logs = git_logs()
+    branches = git_all_branches()
 
-bad_commit_index = process_logs(logs, [not_a_squashed_commit,
-                                       is_empty_body,
-                                       count_bad_words])
-test_index = process_logs(logs, [is_test_commit])
+    bad_commit_index = process_logs(logs, [not_a_squashed_commit,
+                                        is_empty_body,
+                                        count_bad_words])
+    test_index = process_logs(logs, [is_test_commit])
 
-# old_branches_index = count_old_branches(branches)
-# coupling_index = count_coupled(branches)
+    # old_branches_index = count_old_branches(branches)
+    # coupling_index = count_coupled(branches)
+    arg = os.environ["INPUT_BADWORDS"]
+    set_output(arg)
+
+    print(bad_commit_index)
+    print(test_index)
+    # print(old_branches_index)
+    old_branches_index = 100
+    # print(coupling_index)
+    coupling_index = 0
 
 
-print(bad_commit_index)
-print(test_index)
-# print(old_branches_index)
-old_branches_index = 100
-# print(coupling_index)
-coupling_index = 0
+    overall = compute_score(bad_commit_index, test_index,
+                            old_branches_index, coupling_index)
 
-
-overall = compute_score(bad_commit_index, test_index,
-                        old_branches_index, coupling_index)
-
-print(f"::set-output name=score::{overall}")
+    set_output(overall)
