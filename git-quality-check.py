@@ -92,10 +92,10 @@ def git_all_branches():
 def git_get_branch_date(branch):
     if "->" in branch:
         return None
-    ret = run_git(["log", "-n", "1", "--pretty=\"%as\"", branch]).split("-")
+    ret = run_git(["log", "-n", "1", "--pretty=%as", branch]).split("-")
     set_output(ret)
-    # return datetime(int(ret[0]), int(ret[1]), int(ret[2]))
-    return datetime(2012, 8, 8)
+    return datetime(int(ret[0]), int(ret[1]), int(ret[2]))
+    # return datetime(2012, 8, 8)
 
 
 def get_date():
@@ -170,15 +170,15 @@ if __name__ == "__main__":
                                         count_bad_words])
     test_index = process_logs(logs, [is_test_commit])
 
-    old_branches_index = count_old_branches(branches)
+    # old_branches_index = count_old_branches(branches)
     # coupling_index = count_coupled(branches)
     arg = os.environ["INPUT_BADWORDS"]
     arg = os.environ["INPUT_MAINBRANCHES"]
-    # set_output(arg)
+    set_output(branches)
 
     print(bad_commit_index)
     print(test_index)
-    print(old_branches_index)
+    # print(old_branches_index)
     old_branches_index = 100
     # print(coupling_index)
     coupling_index = 0
