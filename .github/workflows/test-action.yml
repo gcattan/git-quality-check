@@ -6,22 +6,13 @@ jobs:
   build-linux:
     runs-on: ubuntu-latest
     steps:
-    - name: install git
-      run: |
-        sudo apt-get upgrade -y
-        sudo apt-get update
-        sudo apt-get -y install software-properties-common
-        sudo apt-get upgrade -y
-        sudo apt-get update
-        sudo apt-add-repository ppa:git-core/ppa -y
-        sudo apt-get -y install git
     - name: Checkout
       uses: actions/checkout@v2
       with:
         fetch-depth: 0
     - name: Git Quality Check
       id: git-quality-check
-      uses: gcattan/git-quality-check@v0.7.2
+      uses: gcattan/git-quality-check@0
       with:
         badWords: WIP, todo
         mainBranches: origin/master, origin/develop
