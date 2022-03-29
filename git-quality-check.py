@@ -94,9 +94,9 @@ def git_get_branch_date(branch):
         return None
     # ret = run_git(["log", "-n", "1", "--pretty=format:%as", branch]).split("-")
     ret = run_git(["log", "-n", "1", "--date=format:\"%Y-%m-%d\"", branch]).split("Date: ")[1]
-    set_output(ret)
-    # return datetime(int(ret[0]), int(ret[1]), int(ret[2]))
-    return datetime(2012, 8, 8)
+    ret = ret.replace("\"", "").split("-")
+    return datetime(int(strip(ret[0])), int(ret[1]), int(ret[2].split("\n")[0]))
+    # return datetime(2012, 8, 8)
 
 
 def get_date():
