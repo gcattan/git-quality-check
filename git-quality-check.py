@@ -173,11 +173,11 @@ if __name__ == "__main__":
     except:
         bad_words = ["WIP", "work in progress", "in progress", "TODO"]
     try:
-        arg = os.environ["INPUT_MAINBRANCHES"].split(", ")
+        main_branches = os.environ["INPUT_MAINBRANCHES"].split(", ")
     except:
         main_branches = ["origin/develop", "origin/master"]
 
-        
+
     logs = git_logs()
     branches = git_all_branches()
 
