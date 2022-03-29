@@ -5,9 +5,9 @@ inputs:
   badWords:
     description: 'Words that should be avoided in commit message.'
     required: false
-#   main_branches:
-#     description: 'Name of the main branches of the repository, e.g. origin/master or origin/develop'
-#     required: false
+  mainBranches:
+    description: 'Name of the main branches of the repository, e.g. origin/master or origin/develop'
+    required: false
 outputs:
   score:
     description: 'Overall score'
@@ -16,4 +16,4 @@ runs:
   image: 'Dockerfile'
   args:
     - ${{ inputs.badWords }}
-    # - ${{ inputs.main_branches }}
+    - ${{ inputs.mainBranches }}

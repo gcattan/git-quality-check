@@ -172,6 +172,7 @@ if __name__ == "__main__":
     # old_branches_index = count_old_branches(branches)
     # coupling_index = count_coupled(branches)
     arg = os.environ["INPUT_BADWORDS"]
+    arg = os.environ["INPUT_mainBranches"]
     set_output(arg)
 
     print(bad_commit_index)
@@ -185,4 +186,4 @@ if __name__ == "__main__":
     overall = compute_score(bad_commit_index, test_index,
                             old_branches_index, coupling_index)
 
-    set_output(overall)
+    # set_output(overall)
