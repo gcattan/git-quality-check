@@ -11,10 +11,11 @@ jobs:
     - name: Git Quality Check
       id: git-quality-check
       uses: gcattan/git-quality-check@v0.1.3
+      with:
+        badWords: 'WIP'
     - name: Check outputs
       run: |
         test "${{ steps.git-quality-check.outputs.score }}" == "50"
-     # with:
-     #   bad_words: 'WIP'
-     #   main_branches: 'origin/master'
+  
+
 
