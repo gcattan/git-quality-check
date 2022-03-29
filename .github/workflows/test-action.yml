@@ -22,7 +22,7 @@ jobs:
     - name: Create badge
       uses: RubbaBoy/BYOB@v1.2.1
       with:
-        NAME: time
+        NAME: score
         LABEL: 'Git Quality Score'
         STATUS: ${{ steps.git-quality-check.outputs.score }}
         COLOR: 00EEFF
