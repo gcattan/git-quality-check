@@ -172,7 +172,7 @@ if __name__ == "__main__":
     # old_branches_index = count_old_branches(branches)
     # coupling_index = count_coupled(branches)
     arg = os.environ["INPUT_BADWORDS"]
-    arg = os.environ["INPUT_mainBranches"]
+    arg = os.environ["INPUT_MAINBRANCHES"]
     set_output(arg)
 
     print(bad_commit_index)
