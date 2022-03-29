@@ -8,6 +8,8 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
     - name: Git Quality Check
       id: git-quality-check
       uses: gcattan/git-quality-check@v0.1.10
