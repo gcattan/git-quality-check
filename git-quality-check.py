@@ -152,7 +152,7 @@ def count_coupled(branches):
     counter = 0
     for bA in branches:
         for bB in branches:
-            counter = 1 if are_coupled(bA, bB) else 0
+            counter += 1 if are_coupled(bA, bB) else 0
     return counter / count * 100
 
 
