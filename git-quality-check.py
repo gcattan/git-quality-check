@@ -132,9 +132,17 @@ def count_old_branches(branches):
 
 
 def are_coupled(branchA: str, branchB: str):
+    if "->" in branchA:
+        return False
+    if "->" in branchB:
+        return False
     if branchA == branchB:
         return False
-    ret = run_git(["branch", "--contains", branchA, "-r"]).split("\n")
+    try:
+        ret = run_git(["branch", "--contains", branchA, "-r"]).split("\n")
+    except:
+        print("Git `branch --contains failed with: ", branchA)
+        return False
     for r in ret:
         if branchB == r.strip().lstrip():
             return True
@@ -187,4 +195,4 @@ if __name__ == "__main__":
     overall = compute_score(bad_commit_index, test_index,
                             old_branches_index, coupling_index)
 
-    # set_output(overall)
+    set_output(overall)
