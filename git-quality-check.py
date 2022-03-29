@@ -94,8 +94,8 @@ def git_get_branch_date(branch):
         return None
     ret = run_git(["log", "-n", "1", "--pretty=%as", branch]).split("-")
     set_output(ret)
-    return datetime(int(ret[0]), int(ret[1]), int(ret[2]))
-    # return datetime(2012, 8, 8)
+    # return datetime(int(ret[0]), int(ret[1]), int(ret[2]))
+    return datetime(2012, 8, 8)
 
 
 def get_date():
@@ -174,7 +174,7 @@ if __name__ == "__main__":
     # coupling_index = count_coupled(branches)
     arg = os.environ["INPUT_BADWORDS"]
     arg = os.environ["INPUT_MAINBRANCHES"]
-    set_output(branches)
+    # set_output(branches)
 
     print(bad_commit_index)
     print(test_index)
