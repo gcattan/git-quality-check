@@ -6,6 +6,9 @@ jobs:
   build-linux:
     runs-on: ubuntu-latest
     steps:
+    - name: install git
+      run: |
+        npm install --save npm-git-install
     - name: Checkout
       uses: actions/checkout@v2
       with:
