@@ -18,6 +18,6 @@ jobs:
         mainBranches: origin/master, origin/develop
     - name: Check outputs
       run: |
-        test "${{ steps.git-quality-check.outputs.score }}" == "50"
+        test "${{ steps.git-quality-check.outputs.score }}" NEQ "50"
 
 
