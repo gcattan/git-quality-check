@@ -87,12 +87,19 @@ def git_all_branches():
     return [strip(r) for r in ret if not strip(r)  == '']
 
 
-def git_get_branch_date(branch):
-    if "->" in branch:
+def is_well_formed_branch(branch:str):
+    return not "->" in branch
+
+
+def git_get_branch_date(branch:str):
+    if not is_well_formed_branch(branch):
         return None
     ret = run_git(["log", "-n", "1", "--date=format:\"%Y-%m-%d\"", branch]).split("Date: ")[1]
     ret = ret.replace("\"", "").split("-")
-    return datetime(int(strip(ret[0])), int(ret[1]), int(ret[2].split("\n")[0]))
+    year = int(strip(ret[0]))
+    month = int(ret[1])
+    day = int(ret[2].split("\n")[0])
+    return datetime(year, month, day)
 
 
 def get_date():
@@ -128,9 +135,8 @@ def count_old_branches(branches):
 
 
 def are_coupled(branchA: str, branchB: str):
-    if "->" in branchA:
-        return False
-    if "->" in branchB:
+    if not is_well_formed_branch(branchA) or\
+       not is_well_formed_branch(branchB):
         return False
     if branchA == branchB:
         return False
@@ -156,8 +162,12 @@ def count_coupled(branches):
     return counter / count * 100
 
 
+def format_number(number:float):
+    return "{0:.2f}".format(number)
+
 def set_output(output:str):
     print(f"::set-output name=score::{output}")
+
 
 def compute_score(bad_commit_index, test_index,
                   old_branches_index, coupling_index):
@@ -166,8 +176,8 @@ def compute_score(bad_commit_index, test_index,
             (100 - coupling_index))/4
 
 
-if __name__ == "__main__":
-
+def parse_inputs():
+    global bad_words, main_branches
     try:
         bad_words = os.environ["INPUT_BADWORDS"].split(", ")
     except:
@@ -177,6 +187,10 @@ if __name__ == "__main__":
     except:
         main_branches = ["origin/develop", "origin/master"]
 
+
+if __name__ == "__main__":
+
+    parse_inputs()
 
     logs = git_logs()
     branches = git_all_branches()
@@ -201,4 +215,4 @@ if __name__ == "__main__":
     overall = compute_score(bad_commit_index, test_index,
                             old_branches_index, coupling_index)
 
-    set_output(overall)
+    set_output(format_number(overall))
