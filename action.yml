@@ -2,12 +2,18 @@ name: 'Git Quality Check'
 description: 'Simple tool to check quality of git commits and tree.'
 author: 'Gregoire Cattan'
 inputs:
-  bad_words:
-    description: 'Words that should be avoid in commit message.'
+  badWords:
+    description: 'Words that should be avoided in commit message.'
     required: false
-  main_branches:
+  mainBranches:
     description: 'Name of the main branches of the repository, e.g. origin/master or origin/develop'
     required: false
+outputs:
+  score:
+    description: 'Overall score'
 runs:
-  using: 'node16'
-  main: 'git-quality-check.py'
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.badWords }}
+    - ${{ inputs.mainBranches }}
