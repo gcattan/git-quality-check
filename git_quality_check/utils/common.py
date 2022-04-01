@@ -1,6 +1,21 @@
 
-from datetime import datetime
 import random
+import os
+from datetime import datetime
+
+
+def parse_inputs():
+    bad_words = []
+    main_branches = []
+    try:
+        bad_words = os.environ["INPUT_BADWORDS"].split(", ")
+    except:
+        bad_words = ["WIP", "work in progress", "in progress", "TODO"]
+    try:
+        main_branches = os.environ["INPUT_MAINBRANCHES"].split(", ")
+    except:
+        main_branches = ["origin/develop", "origin/master"]
+    return bad_words, main_branches
 
 def strip(s: str):
     return s.strip().lstrip()

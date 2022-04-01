@@ -10,5 +10,6 @@ from .git import (
 from .common import (
     sample,
     set_output,
-    format_number
+    format_number,
+    parse_inputs
 )
