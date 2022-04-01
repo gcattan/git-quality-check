@@ -6,6 +6,7 @@ import os
 
 global bad_words, main_branches
 
+
 def run_git(command: list[str]):
     command.insert(0, "--no-pager")
     command.insert(0, "git")
@@ -20,7 +21,7 @@ def remove_first_line(log: str):
     if is_valid_log:
         try:
             eol = log.index("\n")
-            log = log[eol + 1:]
+            log = log[eol + 1 :]
         except ValueError:
             # commit is empty or just contains one line
             return ""
@@ -31,7 +32,7 @@ def is_valid_log(log: str):
     return not log == ""
 
 
-def process_logs(logs: list[str], functions: list[str: int]):
+def process_logs(logs: list[str], functions: list[str:int]):
     counter = 0
     count = len(logs) * len(functions)
     for i in range(len(logs)):
@@ -84,18 +85,20 @@ def strip(s: str):
 
 def git_all_branches():
     ret = run_git(["branch", "-r"]).split("\n")
-    return [strip(r) for r in ret if not strip(r)  == '']
+    return [strip(r) for r in ret if not strip(r) == ""]
 
 
-def is_well_formed_branch(branch:str):
+def is_well_formed_branch(branch: str):
     return not "->" in branch
 
 
-def git_get_branch_date(branch:str):
+def git_get_branch_date(branch: str):
     if not is_well_formed_branch(branch):
         return None
-    ret = run_git(["log", "-n", "1", "--date=format:\"%Y-%m-%d\"", branch]).split("Date: ")[1]
-    ret = ret.replace("\"", "").split("-")
+    ret = run_git(["log", "-n", "1", '--date=format:"%Y-%m-%d"', branch]).split(
+        "Date: "
+    )[1]
+    ret = ret.replace('"', "").split("-")
     year = int(strip(ret[0]))
     month = int(ret[1])
     day = int(ret[2].split("\n")[0])
@@ -120,7 +123,7 @@ def is_old(branch):
 
 def sample(li: list[str], min: int):
     count = len(li)
-    if(count > min):
+    if count > min:
         li = random.sample(branches, min)
         count = min
     return (li, count)
@@ -135,8 +138,7 @@ def count_old_branches(branches):
 
 
 def are_coupled(branchA: str, branchB: str):
-    if not is_well_formed_branch(branchA) or\
-       not is_well_formed_branch(branchB):
+    if not is_well_formed_branch(branchA) or not is_well_formed_branch(branchB):
         return False
     if branchA == branchB:
         return False
@@ -162,18 +164,21 @@ def count_coupled(branches):
     return counter / count * 100
 
 
-def format_number(number:float):
+def format_number(number: float):
     return "{0:.2f}".format(number)
 
-def set_output(output:str):
+
+def set_output(output: str):
     print(f"::set-output name=score::{output}")
 
 
-def compute_score(bad_commit_index, test_index,
-                  old_branches_index, coupling_index):
-    return ((100 - bad_commit_index) +
-            test_index + (100 - old_branches_index) +
-            (100 - coupling_index))/4
+def compute_score(bad_commit_index, test_index, old_branches_index, coupling_index):
+    return (
+        (100 - bad_commit_index)
+        + test_index
+        + (100 - old_branches_index)
+        + (100 - coupling_index)
+    ) / 4
 
 
 def parse_inputs():
@@ -195,24 +200,21 @@ if __name__ == "__main__":
     logs = git_logs()
     branches = git_all_branches()
 
-    bad_commit_index = process_logs(logs, [not_a_squashed_commit,
-                                        is_empty_body,
-                                        count_bad_words])
+    bad_commit_index = process_logs(
+        logs, [not_a_squashed_commit, is_empty_body, count_bad_words]
+    )
     test_index = process_logs(logs, [is_test_commit])
 
     old_branches_index = count_old_branches(branches)
     coupling_index = count_coupled(branches)
-    
-    
 
     print(bad_commit_index)
     print(test_index)
     print(old_branches_index)
     print(coupling_index)
 
-
-
-    overall = compute_score(bad_commit_index, test_index,
-                            old_branches_index, coupling_index)
+    overall = compute_score(
+        bad_commit_index, test_index, old_branches_index, coupling_index
+    )
 
     set_output(format_number(overall))
