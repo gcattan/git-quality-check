@@ -3,6 +3,7 @@ from git_quality_check.utils import (
     remove_header,
 )
 
+
 def is_empty_body(log: str):
     if not is_valid_log(log):
         return 1

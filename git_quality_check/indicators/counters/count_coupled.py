@@ -1,5 +1,6 @@
 from git_quality_check.utils import sample, are_coupled
 
+
 def count_coupled(branches, main_branches):
     branches, count = sample(branches, 10)
     branches.extend(main_branches)

@@ -1,7 +1,5 @@
-from git_quality_check.utils import (
-    sample,
-    is_old
-)
+from git_quality_check.utils import sample, is_old
+
 
 def count_old_branches(branches):
     counter = 0
