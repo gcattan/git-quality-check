@@ -1,4 +1,4 @@
-def process_logs(logs: list[str], functions: list[str: int]):
+def process_logs(logs: list[str], functions: list[str:int]):
     counter = 0
     count = len(logs) * len(functions)
     for i in range(len(logs)):
