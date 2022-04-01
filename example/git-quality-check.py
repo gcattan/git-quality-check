@@ -1,4 +1,3 @@
-import os
 from git_quality_check.utils import (
     git_logs,
     git_all_branches,

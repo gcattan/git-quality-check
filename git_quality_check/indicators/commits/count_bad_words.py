@@ -1,4 +1,3 @@
-
 def count_bad_words(bad_words: list[str]):
     def _count_bad_words(log: str):
         counter = 0
