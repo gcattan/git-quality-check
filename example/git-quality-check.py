@@ -6,13 +6,13 @@ from git_quality_check.utils import (
     format_number
 )
 
-from git_quality_check.indicators import (
+from git_quality_check.indicators.counters import (
     count_old_branches,
     count_coupled,
     process_logs
 )
 
-from git_quality_check.hooks import (
+from git_quality_check.indicators.commits import (
     is_empty_body,
     not_a_squashed_commit,
     count_bad_words,
