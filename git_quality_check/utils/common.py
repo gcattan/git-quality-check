@@ -5,6 +5,7 @@ from datetime import date, datetime
 BADWORDS = "INPUT_BADWORDS"
 MAINBRANCHES = "INPUT_MAINBRANCHES"
 
+
 def parse_inputs():
     bad_words = []
     main_branches = []
