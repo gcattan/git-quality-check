@@ -1,17 +1,19 @@
 import random
 import os
-from datetime import datetime
+from datetime import date, datetime
 
+BADWORDS = "INPUT_BADWORDS"
+MAINBRANCHES = "INPUT_MAINBRANCHES"
 
 def parse_inputs():
     bad_words = []
     main_branches = []
     try:
-        bad_words = os.environ["INPUT_BADWORDS"].split(", ")
+        bad_words = os.environ[BADWORDS].split(", ")
     except:
         bad_words = ["WIP", "work in progress", "in progress", "TODO"]
     try:
-        main_branches = os.environ["INPUT_MAINBRANCHES"].split(", ")
+        main_branches = os.environ[MAINBRANCHES].split(", ")
     except:
         main_branches = ["origin/develop", "origin/master"]
     return bad_words, main_branches
@@ -41,5 +43,5 @@ def set_output(output: str):
     print(f"::set-output name=score::{output}")
 
 
-def diff_month(d1, d2):
+def diff_month(d1: date, d2: date):
     return (d1.year - d2.year) * 12 + d1.month - d2.month
