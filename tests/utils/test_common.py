@@ -15,18 +15,18 @@ def test_parse_inputs():
 def test_sample_same_size():
     li = [3, 10, 6, 15, 20]
     size = len(li)
-    sample = sample(li, size)
-    assert len(sample) == size
+    sample_list = sample(li, size)
+    assert len(sample_list) == size
     for i in range(size):
-        assert li[i] == sample[i]
+        assert li[i] == sample_list[i]
 
 def test_sample_different_size():
     li = [3, 10, 6, 15, 20]
     sample_size = 3
-    sample = sample(li, sample_size)
-    assert len(sample) == sample_size
+    sample_list = sample(li, sample_size)
+    assert len(sample_list) == sample_size
     for i in range(sample_size):
-        assert sample[i] in li
+        assert sample_list[i] in li
 
 def test_diff_months():
     assert False
