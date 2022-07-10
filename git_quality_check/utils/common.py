@@ -5,7 +5,11 @@ from datetime import date, datetime
 BADWORDS = "INPUT_BADWORDS"
 MAINBRANCHES = "INPUT_MAINBRANCHES"
 
-
+"""
+" Gets inputs from environment variables:
+" - bad_words: A list of words that should be avoided in commit messages.
+" - main_branches: The list of main branches (e.g. master, main or develop)
+"""
 def parse_inputs():
     bad_words = []
     main_branches = []
@@ -29,6 +33,17 @@ def get_date():
 
 
 # n: number of element to return in the sample
+"""
+" Computes a sample of size 'n' from a list:
+" - if the size of the list is equal or lower than n, returns the list
+" - if the size of the list is greater than n, returns a sample of n.
+"   (some elements might be repetead)
+" 
+" li: the list
+" n: expected number of elements in the sample
+" 
+" Returns the tuple (sample, )
+"""
 def sample(li: list[str], n: int):
     count = len(li)
     if count > n:

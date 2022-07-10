@@ -12,7 +12,7 @@ def test_parse_inputs():
     assert main_branches[1] == "origin/main"
 
 
-def test_sample_same_size():
+def test_sample_same_size_than_list():
     li = [3, 10, 6, 15, 20]
     size = len(li)
     sample_list, count = sample(li, size)
@@ -20,13 +20,20 @@ def test_sample_same_size():
     for i in range(size):
         assert li[i] == sample_list[i]
 
-
-def test_sample_different_size():
+def test_sample_greater_size_than_list():
     li = [3, 10, 6, 15, 20]
-    sample_size = 3
-    sample_list, count = sample(li, sample_size)
-    assert count == sample_size
-    for i in range(sample_size):
+    size = len(li) + 1
+    sample_list, count = sample(li, size)
+    assert count == size
+    for i in range(size):
+        assert li[i] == sample_list[i]
+
+def test_sample_lower_size_than_list():
+    li = [3, 10, 6, 15, 20]
+    size = len(li) - 1
+    sample_list, count = sample(li, size)
+    assert count == size
+    for i in range(size):
         assert sample_list[i] in li
 
 
