@@ -10,6 +10,8 @@ MAINBRANCHES = "INPUT_MAINBRANCHES"
 " - bad_words: A list of words that should be avoided in commit messages.
 " - main_branches: The list of main branches (e.g. master, main or develop)
 """
+
+
 def parse_inputs():
     bad_words = []
     main_branches = []
@@ -44,6 +46,8 @@ def get_date():
 " 
 " Returns the tuple (sample, )
 """
+
+
 def sample(li: list[str], n: int):
     count = len(li)
     if count > n:

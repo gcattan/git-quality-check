@@ -20,6 +20,7 @@ def test_sample_same_size_than_list():
     for i in range(size):
         assert li[i] == sample_list[i]
 
+
 def test_sample_greater_size_than_list():
     li = [3, 10, 6, 15, 20]
     size = len(li)
@@ -27,6 +28,7 @@ def test_sample_greater_size_than_list():
     assert count == size
     for i in range(size):
         assert li[i] == sample_list[i]
+
 
 def test_sample_lower_size_than_list():
     li = [3, 10, 6, 15, 20]
