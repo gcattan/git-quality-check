@@ -28,11 +28,12 @@ def get_date():
     return datetime.today()
 
 
-def sample(li: list[str], min: int):
+# n: number of element to return in the sample
+def sample(li: list[str], n: int):
     count = len(li)
-    if count > min:
-        li = random.sample(li, min)
-        count = min
+    if count > n:
+        li = random.sample(li, n)
+        count = n
     return (li, count)
 
 

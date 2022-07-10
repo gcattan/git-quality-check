@@ -1,5 +1,5 @@
 import os
-from git_quality_check.utils.common import BADWORDS, MAINBRANCHES, parse_inputs
+from git_quality_check.utils.common import BADWORDS, MAINBRANCHES, parse_inputs, sample
 
 
 def test_parse_inputs():
@@ -12,9 +12,21 @@ def test_parse_inputs():
     assert main_branches[1] == "origin/main"
 
 
-def test_sample():
-    assert False
+def test_sample_same_size():
+    li = [3, 10, 6, 15, 20]
+    size = len(li)
+    sample = sample(li, size)
+    assert len(sample) == size
+    for i in range(size):
+        assert li[i] == sample[i]
 
+def test_sample_different_size():
+    li = [3, 10, 6, 15, 20]
+    sample_size = 3
+    sample = sample(li, sample_size)
+    assert len(sample) == sample_size
+    for i in range(sample_size):
+        assert sample[i] in li
 
 def test_diff_months():
     assert False
