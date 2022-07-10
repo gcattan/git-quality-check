@@ -64,7 +64,7 @@ def git_get_branch_date(branch: str):
 
 
 def remove_first_line(log: str):
-    if is_valid_log:
+    if is_valid_log(log):
         try:
             eol = log.index("\n")
             log = log[eol + 1 :]
