@@ -6,7 +6,6 @@ BADWORDS = "INPUT_BADWORDS"
 MAINBRANCHES = "INPUT_MAINBRANCHES"
 
 
-
 def parse_inputs():
     """
     " Gets inputs from environment variables:
@@ -34,17 +33,16 @@ def get_date():
     return datetime.today()
 
 
-
 def sample(li: list[str], n: int):
     """
     " Computes a sample of size 'n' from a list:
     " - if the size of the list is equal or lower than n, returns the list
     " - if the size of the list is greater than n, returns a sample of n.
     "   (some elements might be repetead)
-    " 
+    "
     " li: the list
     " n: expected number of elements in the sample
-    " 
+    "
     " Returns the tuple (sample, )
     """
     count = len(li)
