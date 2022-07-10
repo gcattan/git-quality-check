@@ -22,9 +22,9 @@ def test_sample_same_size_than_list():
 
 def test_sample_greater_size_than_list():
     li = [3, 10, 6, 15, 20]
-    size = len(li) + 1
-    sample_list, count = sample(li, size)
-    assert count == size - 1
+    size = len(li)
+    sample_list, count = sample(li, size + 1)
+    assert count == size
     for i in range(size):
         assert li[i] == sample_list[i]
 
