@@ -1,5 +1,11 @@
 import os
-from git_quality_check.utils.common import BADWORDS, MAINBRANCHES, parse_inputs, sample, diff_month
+from git_quality_check.utils.common import (
+    BADWORDS,
+    MAINBRANCHES,
+    parse_inputs,
+    sample,
+    diff_month,
+)
 from datetime import datetime
 
 
