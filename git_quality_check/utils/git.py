@@ -31,7 +31,7 @@ def git_all_branches():
     return [strip(r) for r in ret if not strip(r) == ""]
 
 
-def are_coupled(branchA: str, branchB: str):
+def contains(branchA: str, branchB: str):
     if not is_well_formed_branch(branchA) or not is_well_formed_branch(branchB):
         return False
     if branchA == branchB:
