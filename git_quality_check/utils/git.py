@@ -11,8 +11,6 @@ def is_valid_log(log: str):
 def run_git(command: list[str]):
     command.insert(0, "--no-pager")
     command.insert(0, "git")
-    if "pytest" in sys.modules:
-        command.insert(0, "cd ~/git-quality-check/ &")
     return subprocess.check_output(command).decode()
 
 
@@ -22,8 +20,10 @@ def git_logs():
 
 def is_old(branch):
     branch_date = git_get_branch_date(branch)
+    print(branch_date)
     if not branch_date:
         return False
+    print(date)
     date = get_date()
     return diff_month(date, branch_date) > 2
 
