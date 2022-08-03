@@ -1,6 +1,8 @@
 import random
 import os
 from datetime import date, datetime
+from math import abs
+
 
 BADWORDS = "INPUT_BADWORDS"
 MAINBRANCHES = "INPUT_MAINBRANCHES"
@@ -61,4 +63,4 @@ def set_output(output: str):
 
 
 def diff_month(d1: date, d2: date):
-    return (d1.year - d2.year) * 12 + d1.month - d2.month
+    return abs((d1.year - d2.year) * 12 + d1.month - d2.month)
