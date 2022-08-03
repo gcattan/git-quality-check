@@ -2,7 +2,7 @@ from .git import (
     is_valid_log,
     remove_header,
     is_old,
-    are_coupled,
+    contains,
     git_logs,
     git_all_branches,
 )
