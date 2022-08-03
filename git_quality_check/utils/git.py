@@ -10,10 +10,9 @@ def is_valid_log(log: str):
 
 def run_git(command: list[str]):
     command.insert(0, "--no-pager")
+    command.insert(0, "git")
     if "pytest" in sys.modules:
-        command.insert(0, "~/git-quality-check/git")
-    else:
-        command.insert(0, "git")
+        command.insert(0, "cd ~/git-quality-check/ &")
     return subprocess.check_output(command).decode()
 
 
