@@ -20,10 +20,8 @@ def git_logs():
 
 def is_old(branch):
     branch_date = git_get_branch_date(branch)
-    print(branch_date)
     if not branch_date:
         return False
-    print(date)
     date = get_date()
     return diff_month(date, branch_date) > 2
 
