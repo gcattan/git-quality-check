@@ -14,7 +14,9 @@ def test_branch_is_old():
 
 
 def test_branch_are_coupled():
-    assert True == False
+    assert are_coupled("origin/gc/test-action", "origin/gc/pytest") == False
+    assert are_coupled("origin/formatter", "origin/master") == True
+    assert are_coupled("origin/master", "origin/formatter") == False
 
 
 def test_git_all_branches():
