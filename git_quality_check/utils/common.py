@@ -1,7 +1,6 @@
 import random
 import os
 from datetime import date, datetime
-from math import abs
 
 
 BADWORDS = "INPUT_BADWORDS"
