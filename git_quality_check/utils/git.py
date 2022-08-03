@@ -1,4 +1,5 @@
 import subprocess
+import sys
 from datetime import datetime
 from .common import get_date, diff_month, strip
 
@@ -9,7 +10,10 @@ def is_valid_log(log: str):
 
 def run_git(command: list[str]):
     command.insert(0, "--no-pager")
-    command.insert(0, "git")
+    if "pytest" in sys.modules:
+        command.insert(0, "~/git-quality-check/git")
+    else:
+        command.insert(0, "git")
     return subprocess.check_output(command).decode()
 
 
