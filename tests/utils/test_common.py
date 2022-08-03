@@ -1,5 +1,5 @@
 import os
-from git_quality_check.utils.common import BADWORDS, MAINBRANCHES, parse_inputs, sample
+from git_quality_check.utils.common import BADWORDS, MAINBRANCHES, parse_inputs, sample, diff_month
 
 
 def test_parse_inputs():
@@ -40,4 +40,7 @@ def test_sample_lower_size_than_list():
 
 
 def test_diff_months():
-    assert False
+    date1 = datetime('2022', '08', '01')
+    date2 = datetime('2023', '08', '01')
+    assert diff_month(date1, date2) == 12
+    assert diff_month(date2, date1) == 12
