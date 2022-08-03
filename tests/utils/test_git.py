@@ -30,6 +30,7 @@ def test_git_get_branch_date():
     date = git_get_branch_date("origin/formatter")
     assert date == datetime(2022, 4, 1)
 
+
 def test_remove_first_line():
     commit = """commit 7a1e2a6a76e6967bde14e95900996ca17811de47 (origin/gc/pytest)
     Author: gcattan <gregoire.cattan@ibm.com>
