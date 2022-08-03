@@ -41,7 +41,7 @@ def test_sample_lower_size_than_list():
 
 
 def test_diff_months():
-    date1 = datetime('2022', '08', '01')
-    date2 = datetime('2023', '08', '01')
+    date1 = datetime(2022, 8, 1)
+    date2 = datetime(2023, 8, 1)
     assert diff_month(date1, date2) == 12
     assert diff_month(date2, date1) == 12

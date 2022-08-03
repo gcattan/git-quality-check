@@ -9,7 +9,7 @@ from git_quality_check.utils.git import (
 
 
 def test_branch_is_old():
-    assert is_old("gc/pytest_utils") == True
+    assert is_old("gc/pytest") == True
 
 
 def test_branch_are_coupled():
