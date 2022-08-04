@@ -1,4 +1,5 @@
 import subprocess
+import sys
 from datetime import datetime
 from .common import get_date, diff_month, strip
 
@@ -30,18 +31,19 @@ def git_all_branches():
     return [strip(r) for r in ret if not strip(r) == ""]
 
 
-def are_coupled(branchA: str, branchB: str):
+# checks if branchA contains branchB
+def contains(branchA: str, branchB: str):
     if not is_well_formed_branch(branchA) or not is_well_formed_branch(branchB):
         return False
     if branchA == branchB:
         return False
     try:
-        ret = run_git(["branch", "--contains", branchA, "-r"]).split("\n")
+        ret = run_git(["branch", "--contains", branchB, "-r"]).split("\n")
     except:
-        print("Git `branch --contains failed with: ", branchA)
+        print("Git `branch --contains failed with: ", branchB)
         return False
     for r in ret:
-        if branchB == r.strip().lstrip():
+        if branchA == r.strip().lstrip():
             return True
     return False
 
@@ -53,7 +55,7 @@ def is_well_formed_branch(branch: str):
 def git_get_branch_date(branch: str):
     if not is_well_formed_branch(branch):
         return None
-    ret = run_git(["log", "-n", "1", '--date=format:"%Y-%m-%d"', branch]).split(
+    ret = run_git(["log", "-n", "1", '--date=format:"%Y-%m-%d"', branch, "-r"]).split(
         "Date: "
     )[1]
     ret = ret.replace('"', "").split("-")
@@ -64,7 +66,7 @@ def git_get_branch_date(branch: str):
 
 
 def remove_first_line(log: str):
-    if is_valid_log:
+    if is_valid_log(log):
         try:
             eol = log.index("\n")
             log = log[eol + 1 :]
