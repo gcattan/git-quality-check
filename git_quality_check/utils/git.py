@@ -54,7 +54,7 @@ def is_well_formed_branch(branch: str):
 def git_get_branch_date(branch: str):
     if not is_well_formed_branch(branch):
         return None
-    ret = run_git(["log", "-n", "1", '--date=format:"%Y-%m-%d"', branch]).split(
+    ret = run_git(["log", "-n", "1", '--date=format:"%Y-%m-%d"', branch, "-r"]).split(
         "Date: "
     )[1]
     ret = ret.replace('"', "").split("-")
