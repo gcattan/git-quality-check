@@ -16,8 +16,7 @@ def test_branch_is_old():
 
 def test_branch_contains():
     assert contains("origin/gc/test-action", "origin/gc/pytest") == False
-    assert contains("origin/formatter", "origin/master") == True
-    assert contains("origin/master", "origin/formatter") == False
+    assert contains("origin/master", "origin/formatter") == True
 
 
 def test_git_all_branches():

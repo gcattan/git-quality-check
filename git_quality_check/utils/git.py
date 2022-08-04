@@ -31,18 +31,19 @@ def git_all_branches():
     return [strip(r) for r in ret if not strip(r) == ""]
 
 
+# checks if branchA contains branchB
 def contains(branchA: str, branchB: str):
     if not is_well_formed_branch(branchA) or not is_well_formed_branch(branchB):
         return False
     if branchA == branchB:
         return False
     try:
-        ret = run_git(["branch", "--contains", branchA, "-r"]).split("\n")
+        ret = run_git(["branch", "--contains", branchB, "-r"]).split("\n")
     except:
-        print("Git `branch --contains failed with: ", branchA)
+        print("Git `branch --contains failed with: ", branchB)
         return False
     for r in ret:
-        if branchB == r.strip().lstrip():
+        if branchA == r.strip().lstrip():
             return True
     return False
 
