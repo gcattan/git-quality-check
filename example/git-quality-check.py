@@ -16,7 +16,7 @@ from git_quality_check.indicators.counters import (
 from git_quality_check.indicators.commits import (
     is_empty_body,
     not_a_squashed_commit,
-    count_bad_words,
+    does_contain_bad_words,
     is_test_commit,
 )
 
@@ -31,7 +31,7 @@ if __name__ == "__main__":
     branches = git_all_branches()
 
     bad_commit_index = process_logs(
-        logs, [not_a_squashed_commit, is_empty_body, count_bad_words(bad_words)]
+        logs, [not_a_squashed_commit, is_empty_body, does_contain_bad_words(bad_words)]
     )
     test_index = process_logs(logs, [is_test_commit])
 
