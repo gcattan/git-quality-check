@@ -1,9 +1,8 @@
 import pytest
 from git_quality_check.indicators.commits import is_test_commit
 
-@pytest.mark.parametrize(
-        'log', ['test', 'testing', 'test it', 'I am testing it']
-    )
+
+@pytest.mark.parametrize("log", ["test", "testing", "test it", "I am testing it"])
 def test_is_test_commit(log):
     assert is_test_commit(log) == 1
 

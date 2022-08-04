@@ -1,5 +1,6 @@
 from git_quality_check.indicators.commits import does_contain_bad_words
 
+
 def test():
     bad_words = ["bad", "word"]
     counter = does_contain_bad_words(bad_words)
