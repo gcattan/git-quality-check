@@ -1,4 +1,3 @@
-import pytest
 from git_quality_check.indicators.commits import does_contain_bad_words
 
 def test():

@@ -6,7 +6,13 @@ def count_coupled(branches, main_branches):
     branches.extend(main_branches)
     count += len(main_branches)
     counter = 0
+    max_counter = 0
+    print(branches)
     for bA in branches:
         for bB in branches:
-            counter += 1 if contains(bA, bB) else 0
-    return counter / count * 100
+            if not bA == bB:
+                print(bA, bB, contains(bA, bB) )
+                counter += 1 if contains(bA, bB) else 0
+                max_counter += 1
+    print(max_counter)
+    return counter / max_counter * 100
