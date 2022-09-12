@@ -2,6 +2,7 @@ name: 'Git Quality Check'
 description: 'Simple tool to check quality of git commits and tree.'
 author: 'Gregoire Cattan'
 icon: check-circle
+color: green
 inputs:
   badWords:
     description: 'Words that should be avoided in commit message.'
