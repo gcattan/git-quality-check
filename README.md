@@ -15,7 +15,7 @@ The closer to 100%, the higher the quality.
 
 ## Examples
 
-Place the folowing example in your `.github/workflows` repository (in a file called `test-action.yml`) for example:
+Place the following example in your `.github/workflows` repository (in a file called `test-action.yml`) for example:
 
 ```
 name: Test Action
