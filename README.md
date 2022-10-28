@@ -80,4 +80,4 @@ You can find the complete example of `test-action.yml` [here](.github/workflows/
 
 ```<img type="image/svg" src="https://byob.yarr.is/<your github account>/<your project>/score"/>```
 
-Do not forget to replace <you github account> and <your project> in the above!!
+Do not forget to replace `<you github account>` and `<your project>` in the above!!
