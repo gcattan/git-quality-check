@@ -11,8 +11,8 @@ def does_contain_bad_words(bad_words: list[str]):
     Returns
      -------
     _does_contain_bad_words: Callable(log: str)
-        Handler method that return true if the log contains the specified
-        "bad" words.
+        Handler method that return 1 if the log contains the specified
+        "bad" words (0 otherwise)
     """
     def _does_contain_bad_words(log: str):
         counter = 0

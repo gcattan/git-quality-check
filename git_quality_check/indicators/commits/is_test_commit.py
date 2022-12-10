@@ -10,8 +10,8 @@ def is_test_commit(log: str):
 
     Returns
      -------
-    is_test_commit: Bool
-        true if the commit contains "test" or "testing". 
+    is_test_commit: int
+        1 if the commit contains "test" or "testing" (0 otherwise). 
     """
     for word in ["test", "testing"]:
         if word in log.lower().split():

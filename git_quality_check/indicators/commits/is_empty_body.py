@@ -16,8 +16,8 @@ def is_empty_body(log: str):
 
     Returns
      -------
-    is_empty: Bool
-        true if the body of the commit is empty.
+    is_empty: int
+        1 if the body of the commit is empty (0 otherwise).
     """
     if not is_valid_log(log):
         return 1

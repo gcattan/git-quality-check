@@ -10,8 +10,8 @@ def not_a_squashed_commit(log: str):
 
     Returns
      -------
-    is_not_a_squashed_commit: Bool
-        true if the commit is NOT a squashed commit.
+    is_not_a_squashed_commit: int
+        1 if the commit is NOT a squashed commit (0 otherwise).
     """
     if "(#" not in log:
         return 1
