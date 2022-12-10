@@ -1,6 +1,6 @@
 def does_contain_bad_words(bad_words: list[str]):
     """
-    Fixture returning an handler that tell if a log contains
+    Factory method returning an handler that tell if a log contains
     the specified bad words.
 
     Parameters
