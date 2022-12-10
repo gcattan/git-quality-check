@@ -7,7 +7,7 @@ def count_coupled(branches: list[str], main_branches: list[str]):
     A branch is coupled to another branch if it is contained
     in this other branch history (git branch --contains...).
     When there is more than 10 branches, the method randomly
-    select 10 branches among all branches plus the branches
+    selects 10 branches among all branches plus the branches
     passed through the `main_branches` input.
 
     Parameters
@@ -16,16 +16,16 @@ def count_coupled(branches: list[str], main_branches: list[str]):
         The branches in the git repository.
     main_branches: list[str]
         Additional branches to look into.
-        This is usefull when the number of branche is > 10.
+        This is useful when the number of branche is > 10.
         In this case, the method randomly
-        select 10 branches among all branches plus the branches
+        selects 10 branches among all branches plus the branches
         passed through the `main_branches` input.
 
     Returns
      -------
     percent: float
         The percent of coupled branches
-        (or an estimation in case where the number of branches is > 10)
+        (or an estimation in cases where the number of branches is > 10)
     """
     branches, count = sample(branches, 10)
     branches.extend(main_branches)

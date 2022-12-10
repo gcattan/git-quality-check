@@ -7,11 +7,11 @@ from git_quality_check.utils import (
 def is_empty_body(log: str):
     """
     Return true if the body of the commit is empty.
-    (not taking into account the headers).
+    (not taking into account the commit headers).
 
     Parameters
     ----------
-    log : str
+    log: str
         The log of a commit.
 
     Returns

@@ -5,7 +5,7 @@ def not_a_squashed_commit(log: str):
 
     Parameters
     ----------
-    log : str
+    log: str
         The log of a commit.
 
     Returns

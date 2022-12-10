@@ -5,7 +5,7 @@ def is_test_commit(log: str):
 
     Parameters
     ----------
-    log : str
+    log: str
         The log of a commit.
 
     Returns

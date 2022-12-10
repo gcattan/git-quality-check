@@ -7,7 +7,7 @@ def count_old_branches(branches):
 
     Parameters
     ----------
-    branches : list[str]
+    branches: list[str]
         The branches in the git repository.
 
     Returns

@@ -5,14 +5,14 @@ def does_contain_bad_words(bad_words: list[str]):
 
     Parameters
     ----------
-    bad_words : list[str]
-        A list of word to be avoided in a commit log.
+    bad_words: list[str]
+        A list of words to be avoided in a commit log.
 
     Returns
      -------
     _does_contain_bad_words: Callable(log: str)
         Handler method that return 1 if the log contains the specified
-        "bad" words (0 otherwise)
+        "bad" words (0 otherwise).
     """
 
     def _does_contain_bad_words(log: str):
