@@ -1,8 +1,7 @@
 def process_logs(logs: list[str], functions: list[str:int]):
     """
     Call a list of functions on the commit logs.
-    Each function is a scoring function that returns
-    either 1 or 0.
+    Each function is a scoring function that returns either 1 or 0.
     The method then returns the percent of functions having returned 1.
 
     Parameters
