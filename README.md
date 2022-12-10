@@ -10,7 +10,7 @@ Four estimation are performed:
 A branch is coupled to another branch if it is contained in this other branch history (`git branch --contains...`).
 When there is more than 10 branches, the program randomly select 10 branches among all branches plus the branches passed through the `mainBranches` input.
 
-The overall score returned as an output is a combination of these score.
+The overall score returned as an output is a combination of these scores.
 The closer to 100%, the higher the quality.
 
 An example is available [here](.github/workflows/test-action.yml).
