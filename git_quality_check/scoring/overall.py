@@ -1,6 +1,8 @@
-def compute_score(bad_commit_index: int, test_index: int, old_branches_index:int, coupling_index:int):
+def compute_score(
+    bad_commit_index: int, test_index: int, old_branches_index: int, coupling_index: int
+):
     """
-    Compute a global score based on four different indices. 
+    Compute a global score based on four different indices.
     The closer to 100%, the higher the quality.
 
     Parameters
@@ -19,7 +21,7 @@ def compute_score(bad_commit_index: int, test_index: int, old_branches_index:int
     Returns
     -------
     global_score: float
-        The overall score. 
+        The overall score.
 
     See Also
     --------
