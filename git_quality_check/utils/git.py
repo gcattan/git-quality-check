@@ -53,7 +53,6 @@ def contains(branchA: str, branchB: str):
     try:
         ret = run_git(["branch", "--contains", branchB, "-r"]).split("\n")
     except:
-        print("Git `branch --contains failed with: ", branchB)
         return False
     for r in ret:
         if branchA == r.strip().lstrip():
