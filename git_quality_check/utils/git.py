@@ -19,6 +19,19 @@ def git_logs():
 
 
 def is_old(branch):
+    """
+    Return true if the branch is older than 2 months.
+
+    Parameters
+    ----------
+    branch: str
+        A branch in the repository.
+
+    Returns
+    -------
+    is_old: Bool
+        True if the branch is old.
+    """
     branch_date = git_get_branch_date(branch)
     if not branch_date:
         return False
