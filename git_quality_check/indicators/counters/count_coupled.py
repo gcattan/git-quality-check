@@ -35,7 +35,6 @@ def count_coupled(branches: list[str], main_branches: list[str]):
     for bA in branches:
         for bB in branches:
             if not bA == bB:
-                print(bA, bB, contains(bA, bB))
                 counter += 1 if contains(bA, bB) else 0
                 max_counter += 1
     return counter / max_counter * 100
