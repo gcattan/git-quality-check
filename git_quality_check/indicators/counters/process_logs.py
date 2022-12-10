@@ -4,7 +4,7 @@ def process_logs(logs: list[str], functions: list[str:int]):
     Each function is a scoring function that returns
     either 1 or 0.
     The method then return the percent of functions having returned 1.
-    
+
     Parameters
     ----------
     logs: list[str]
