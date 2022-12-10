@@ -38,10 +38,10 @@ if __name__ == "__main__":
     old_branches_index = count_old_branches(branches)
     coupling_index = count_coupled(branches, main_branches)
 
-    print("Percent of bad commits: ", bad_commit_index)
-    print("Percent of test commits: ", test_index)
-    print("Percent of old branches: ", old_branches_index)
-    print("Percent of coupled branches", coupling_index)
+    print("Percent of bad commits: ", format_number(bad_commit_index))
+    print("Percent of test commits: ", format_number(test_index))
+    print("Percent of old branches: ", format_number(old_branches_index))
+    print("Percent of coupled branches", format_number(coupling_index))
 
     overall = compute_score(
         bad_commit_index, test_index, old_branches_index, coupling_index
