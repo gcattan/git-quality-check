@@ -5,6 +5,7 @@ from .git import (
     contains,
     git_logs,
     git_all_branches,
+    add_safe_directory
 )
 
 from .common import (
