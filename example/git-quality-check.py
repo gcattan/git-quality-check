@@ -4,7 +4,7 @@ from git_quality_check.utils import (
     set_output,
     format_number,
     parse_inputs,
-    add_safe_directory
+    add_safe_directory,
 )
 
 from git_quality_check.indicators.counters import (
