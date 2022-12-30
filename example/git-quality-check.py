@@ -4,6 +4,7 @@ from git_quality_check.utils import (
     set_output,
     format_number,
     parse_inputs,
+    add_safe_directory,
 )
 
 from git_quality_check.indicators.counters import (
@@ -27,6 +28,7 @@ if __name__ == "__main__":
 
     bad_words, main_branches = parse_inputs()
 
+    add_safe_directory()
     logs = git_logs()
     branches = git_all_branches()
 

@@ -8,6 +8,12 @@ def is_valid_log(log: str):
     return not log == ""
 
 
+def add_safe_directory(dir: str = None):
+    if dir is None:
+        dir = "/github/workspace"
+    return run_git(["config", "--global", "--add", "safe.directory", dir])
+
+
 def run_git(command: list[str]):
     command.insert(0, "--no-pager")
     command.insert(0, "git")
