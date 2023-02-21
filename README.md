@@ -32,7 +32,7 @@ jobs:
         fetch-depth: 0
     - name: Git Quality Check
       id: git-quality-check
-      uses: gcattan/git-quality-check@v0.1
+      uses: gcattan/git-quality-check@v0.1.2
       with:
         badWords: WIP, todo
         mainBranches: origin/master, origin/develop, origin/main
