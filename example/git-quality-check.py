@@ -25,7 +25,6 @@ from git_quality_check.scoring import compute_score
 
 
 if __name__ == "__main__":
-
     bad_words, main_branches = parse_inputs()
 
     add_safe_directory()
