@@ -23,5 +23,6 @@ jobs:
     - name: Test with pytest
       run: |
         conda install pytest
+        conda install coverage
         git fetch
-        pytest
+        coverage run -m pytest
