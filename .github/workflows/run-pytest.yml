@@ -19,7 +19,8 @@ jobs:
         echo $CONDA/bin >> $GITHUB_PATH
     - name: Install git repo
       run: |
-        python setup.py develop
+        python -m pip install --upgrade pip
+        pip install .
     - name: Test with pytest
       run: |
         conda install pytest
